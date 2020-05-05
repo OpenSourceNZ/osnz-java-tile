@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+
+  <properties>
+    <!-- project settings -->
+    <project.tile.docker.mainClass>io.osnz.Application</project.tile.docker.mainClass>
+    <project.tile.docker.appProperties>-P/etc/app/app.properties</project.tile.docker.appProperties>
+    <project.tile.docker.secretProperties>-P/etc/app/secret.properties</project.tile.docker.secretProperties>
+    <project.tile.docker.argument1>-DdevMode=false</project.tile.docker.argument1>
+    <project.tile.docker.argument2>-Denv=PROD</project.tile.docker.argument2>
+    <!-- project settings -->
+    <project.tile.docker.registry>docker.io</project.tile.docker.registry>
+    <project.tile.docker.from>openjdk:11-jre-slim-stretch</project.tile.docker.from>
+    <project.tile.docker.name>${project.artifactId}</project.tile.docker.name>
+    <project.tile.docker.fullName>${project.tile.docker.registry}/${project.artifactId}</project.tile.docker.fullName>
+    <project.tile.docker.currentTag>${project.version}</project.tile.docker.currentTag>
+    <project.tile.docker.latestTag>latest</project.tile.docker.latestTag>
+    <project.tile.docker.port>8080</project.tile.docker.port>
+
+    <docker.auth.username>changeme</docker.auth.username>
+    <docker.auth.password>changeme</docker.auth.password>
+
+    <!-- plugin settings -->
+    <project.tile.docker.runnerClass>bathe.BatheBooter</project.tile.docker.runnerClass>
+
+    <!-- tile settings -->
+    <maven-tile.jib-maven.docker.image.from>${project.tile.docker.from}</maven-tile.jib-maven.docker.image.from>
+    <maven-tile.jib-maven.docker.image.name>${project.tile.docker.fullName}</maven-tile.jib-maven.docker.image.name>
+    <maven-tile.jib-maven.docker.image.tag1>${project.tile.docker.currentTag}</maven-tile.jib-maven.docker.image.tag1>
+    <maven-tile.jib-maven.docker.image.tag2>${project.tile.docker.latestTag}</maven-tile.jib-maven.docker.image.tag2>
+    <maven-tile.jib-maven.docker.image.port>${project.tile.docker.port}</maven-tile.jib-maven.docker.image.port>
+
+    <maven-tile.jib-maven.docker.mainClass>-R${project.tile.docker.mainClass}</maven-tile.jib-maven.docker.mainClass>
+    <maven-tile.jib-maven.docker.app.argument1>${project.tile.docker.appProperties}</maven-tile.jib-maven.docker.app.argument1>
+    <maven-tile.jib-maven.docker.app.argument2>${project.tile.docker.secretProperties}</maven-tile.jib-maven.docker.app.argument2>
+    <maven-tile.jib-maven.docker.app.argument3>${project.tile.docker.argument1}</maven-tile.jib-maven.docker.app.argument3>
+    <maven-tile.jib-maven.docker.app.argument4>${project.tile.docker.argument2}</maven-tile.jib-maven.docker.app.argument4>
+
+    <maven-tile.jib-maven.docker.jvmFlag1>--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED</maven-tile.jib-maven.docker.jvmFlag1>
+    <maven-tile.jib-maven.docker.jvmFlag2>-Dio.netty.tryReflectionSetAccessible=true</maven-tile.jib-maven.docker.jvmFlag2>
+    <maven-tile.jib-maven.docker.jvmFlag3>--add-opens=java.base/java.nio=ALL-UNNAMED</maven-tile.jib-maven.docker.jvmFlag3>
+
+    <!-- maven tile plugin version -->
+    <project.tile.plugins.jib-maven-plugin.version>1.8.0</project.tile.plugins.jib-maven-plugin.version>
+
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>${project.tile.plugins.jib-maven-plugin.version}</version>
+        <configuration>
+          <from>
+            <image>${maven-tile.jib-maven.docker.image.from}</image>
+          </from>
+          <container>
+            <ports>
+              <port>${maven-tile.jib-maven.docker.image.port}</port>
+            </ports>
+            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+            <mainClass>${project.tile.docker.bathe.mainClass}</mainClass>
+            <jvmFlags>
+              <jvmFlag>${maven-tile.jib-maven.docker.jvmFlag1}</jvmFlag>
+              <jvmFlag>${maven-tile.jib-maven.docker.jvmFlag2}</jvmFlag>
+              <jvmFlag>${maven-tile.jib-maven.docker.jvmFlag3}</jvmFlag>
+            </jvmFlags>
+            <args>
+              <arg>${maven-tile.jib-maven.docker.mainClass}</arg>
+              <arg>${maven-tile.jib-maven.docker.app.argument1}</arg>
+              <arg>${maven-tile.jib-maven.docker.app.argument2}</arg>
+              <arg>${maven-tile.jib-maven.docker.app.argument3}</arg>
+              <arg>${maven-tile.jib-maven.docker.app.argument4}</arg>
+            </args>
+          </container>
+          <to>
+            <image>${maven-tile.jib-maven.docker.image.name}:${maven-tile.jib-maven.docker.image.tag1}</image>
+            <tags>
+              <tag>${maven-tile.jib-maven.docker.image.tag2}</tag>
+            </tags>
+          </to>
+        </configuration>
+        <executions>
+          <execution>
+            <id>build-docker</id>
+            <phase>package</phase>
+            <goals>
+              <goal>dockerBuild</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>docker-push</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>jib-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>deploy-docker</id>
+                <phase>install</phase>
+                <goals>
+                  <goal>build</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>docker-auth-push</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>jib-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>deploy-docker</id>
+                <phase>install</phase>
+                <goals>
+                  <goal>build</goal>
+                </goals>
+                <configuration>
+                  <to>
+                    <auth>
+                      <username>${docker.auth.username}</username>
+                      <password>${docker.auth.password}</password>
+                    </auth>
+                  </to>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+</project>

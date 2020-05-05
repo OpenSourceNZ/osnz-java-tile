@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <tiles>
+    <tile>io.osnz.tiles:tile-java-core:[1.3,2)</tile>
+  </tiles>
+  <properties>
+    <java.version>11</java.version>
+    <project.tile.plugins.compile.release>${java.version}</project.tile.plugins.compile.release>
+    <project.tile.plugins.compile.executable>javac11</project.tile.plugins.compile.executable>
+    <project.tile.plugins.compile.useIncrementalCompilation>false</project.tile.plugins.compile.useIncrementalCompilation>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${project.tile.plugins.maven-compiler-plugin.version}</version>
+        <configuration>
+          <release>${project.tile.plugins.compile.release}</release>
+          <source>${project.tile.plugins.compile.source}</source>
+          <target>${project.tile.plugins.compile.target}</target>
+          <executable>${project.tile.plugins.compile.executable}</executable>
+          <useIncrementalCompilation>${project.tile.plugins.compile.useIncrementalCompilation}</useIncrementalCompilation>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${project.tile.plugins.maven-surefire-plugin.version}</version>
+        <configuration>
+          <useSystemClassLoader>${project.tile.plugins.maven-surefire-plugin.use-system-classloader}</useSystemClassLoader>
+          <useManifestOnlyJar>false</useManifestOnlyJar>
+          <failIfNoTests>false</failIfNoTests>
+          <includes>
+            <include>**/*Test.java</include>
+            <include>**/*Spec.java</include>
+          </includes>
+          <argLine>--illegal-access=permit</argLine>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+
+  <properties>
+    <project.tile.properties.resource.delimiter>@</project.tile.properties.resource.delimiter>
+    <resource.delimiter>${project.tile.properties.resource.delimiter}</resource.delimiter>
+  </properties>
+
+  <build>
+    <resources>
+      <resource>
+        <filtering>true</filtering>
+        <directory>${basedir}/src/main/resources</directory>
+        <includes>
+          <include>*.yaml</include>
+          <include>*.xml</include>
+          <include>*.properties</include>
+        </includes>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <filtering>true</filtering>
+        <directory>${basedir}/src/test/resources</directory>
+        <includes>
+          <include>*.yaml</include>
+          <include>*.xml</include>
+          <include>*.properties</include>
+        </includes>
+      </testResource>
+    </testResources>
+  </build>
+
+</project>

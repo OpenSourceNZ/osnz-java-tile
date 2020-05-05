@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>nz.govt.nzta.maas.tiles</groupId>
+  <artifactId>tile-properties</artifactId>
+  <version>1.999-SNAPSHOT</version>
+  <packaging>tile</packaging>
+  <name>tile-properties</name>
+  <description>NZTA | Connected Journeys | MaaS | Tiles | tile-properties</description>
+
+  <properties>
+    <project.scm.id>maas-java</project.scm.id>
+    <repository.release.id>mobilityos-repo-bucket-release</repository.release.id>
+    <repository.release.url>gs://mobilityos-maven-repository/release</repository.release.url>
+    <repository.snapshot.id>mobilityos-repo-bucket-snapshot</repository.snapshot.id>
+    <repository.snapshot.url>gs://mobilityos-maven-repository/snapshot</repository.snapshot.url>
+  </properties>
+
+  <organization>
+    <name>NZTA | Connected Journeys | MaaS</name>
+    <url>http://www.nzta.govt.nz</url>
+  </organization>
+  <url>http://www.nzta.govt.nz</url>
+  <inceptionYear>2019</inceptionYear>
+
+  <developers>
+    <developer>
+      <name>Kefeng Deng</name>
+      <email>kefeng.deng@connectedjourneys.co.nz</email>
+      <organization>on behalf of NZTA | Connected Journeys | MaaS</organization>
+      <organizationUrl>http://www.nzta.govt.nz</organizationUrl>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>Closed Source</name>
+      <url>http://www.nzta.govt.nz</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:https://github.com/Connected-Journeys/${project.scm.id}.git</connection>
+    <developerConnection>scm:git:https://github.com/Connected-Journeys/${project.scm.id}.git</developerConnection>
+    <url>https://github.com/Connected-Journeys/${project.scm.id}</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>io.repaint.maven</groupId>
+        <artifactId>tiles-maven-plugin</artifactId>
+        <version>2.15</version>
+        <extensions>true</extensions>
+        <configuration>
+          <tiles>
+            <tile>nz.govt.nzta.maas.tiles:tile-release:[1.1,2)</tile>
+          </tiles>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.gkatzioura.maven.cloud</groupId>
+            <artifactId>google-storage-wagon</artifactId>
+            <version>1.7</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+  <repositories>
+    <repository>
+      <id>${repository.snapshot.id}</id>
+      <url>${repository.snapshot.url}</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>${repository.release.id}</id>
+      <url>${repository.release.url}</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>jcenter</id>
+      <name>jcenter</name>
+      <url>https://jcenter.bintray.com/</url>
+    </repository>
+  </repositories>
+</project>
+

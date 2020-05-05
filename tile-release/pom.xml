@@ -1,0 +1,183 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.osnz.tiles</groupId>
+  <artifactId>tile-release</artifactId>
+  <version>1.2-SNAPSHOT</version>
+  <packaging>tile</packaging>
+
+  <name>tile-release</name>
+  <description>Release Tile</description>
+  <url>https://github.com/kdeng/osnz-java/io.osnz.tiles/tile-release</url>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>kdeng</id>
+      <name>Kefeng Deng</name>
+      <email>deng@51any.com</email>
+    </developer>
+  </developers>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+    <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
+    <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+    <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
+    <tiles-maven-plugin.version>2.15</tiles-maven-plugin.version>
+    <maven-scm-plugin.version>1.11.2</maven-scm-plugin.version>
+    <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+    <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+    <maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
+    <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+    <maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
+    <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
+    <maven-javadoc-plugin.version>3.1.0</maven-javadoc-plugin.version>
+
+    <!-- distribution information -->
+    <repository.release.id>oss-release</repository.release.id>
+    <repository.release.url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</repository.release.url>
+    <repository.snapshot.id>oss-release</repository.snapshot.id>
+    <repository.snapshot.url>https://oss.sonatype.org/content/repositories/snapshots/</repository.snapshot.url>
+
+  </properties>
+
+  <!-- make sure you put your username/password in your settings.xml for oss-release -->
+  <distributionManagement>
+    <repository>
+      <id>${repository.release.id}</id>
+      <name>Staging Repository</name>
+      <url>${repository.release.url}</url>
+    </repository>
+    <snapshotRepository>
+      <id>${repository.snapshot.id}</id>
+      <name>Snapshot Repository</name>
+      <url>${repository.snapshot.url}</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <scm>
+    <connection>scm:git:git@github.com:kdeng/osnz-java/io.osnz.tiles/tile-release.git</connection>
+    <developerConnection>scm:git:git@github.com:kdeng/osnz-java/io.osnz.tiles/tile-release.git</developerConnection>
+    <url>git@github.com:kdeng/osnz-java/io.osnz.tiles/tile-release.git</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <profiles>
+    <profile>
+      <id>release</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>${maven-gpg-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>io.repaint.maven</groupId>
+        <artifactId>tiles-maven-plugin</artifactId>
+        <version>${tiles-maven-plugin.version}</version>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-scm-plugin</artifactId>
+          <version>${maven-scm-plugin.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${maven-deploy-plugin.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>${maven-install-plugin.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>${maven-release-plugin.version}</version>
+          <configuration>
+            <mavenExecutorId>forked-path</mavenExecutorId>
+            <preparationGoals>validate clean verify</preparationGoals>
+            <goals>deploy</goals>
+            <tagBase>release/${project.groupId}/</tagBase>
+            <pushChanges>false</pushChanges>
+            <localCheckout>true</localCheckout>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${maven-source-plugin.version}</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <phase>package</phase>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${maven-javadoc-plugin.version}</version>
+          <executions>
+            <execution>
+              <id>attach-java-docs</id>
+              <phase>package</phase>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+      </plugins>
+    </pluginManagement>
+  </build>
+
+</project>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+
+  <properties>
+    <project.tile.plugins.maven-resources-plugin.version>3.1.0</project.tile.plugins.maven-resources-plugin.version>
+
+    <project.tile.helm.resource.delimiter>@</project.tile.helm.resource.delimiter>
+    <project.tile.helm.source>${project.basedir}/cloudbuild/helm</project.tile.helm.source>
+    <project.tile.helm.output>${project.build.directory}/cloudbuild/helm</project.tile.helm.output>
+
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>${project.tile.plugins.maven-resources-plugin.version}</version>
+        <configuration>
+          <delimiters>
+            <delimiter>${project.tile.helm.resource.delimiter}</delimiter>
+          </delimiters>
+          <useDefaultDelimiters>false</useDefaultDelimiters>
+        </configuration>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.tile.helm.output}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.tile.helm.source}</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
