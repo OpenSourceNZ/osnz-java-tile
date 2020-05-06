@@ -3,25 +3,29 @@
   <modelVersion>4.0.0</modelVersion>
 
   <properties>
+
+    <sonar.projectKey>${project.artifactId}</sonar.projectKey>
+    <sonar.projectName>${project.name}</sonar.projectName>
+    <sonar.organization>opensourcenz</sonar.organization>
+    <sonar.host>https://sonarcloud.io</sonar.host>
+    <sonar.branchName>master</sonar.branchName>
+    <sonar.token></sonar.token>
+    <sonar.password></sonar.password>
+
+    <!-- maven plugin version -->
     <project.tiles.exec-maven-plugin.version>1.6.0</project.tiles.exec-maven-plugin.version>
 
-    <project.tile.sonar.projectKey>${project.artifactId}</project.tile.sonar.projectKey>
-    <project.tile.sonar.projectName>${project.description}</project.tile.sonar.projectName>
-    <project.tile.sonar.organization>kdeng</project.tile.sonar.organization>
-    <project.tile.sonar.host>https://sonarcloud.io</project.tile.sonar.host>
-    <project.tile.sonar.debug>false</project.tile.sonar.debug>
-    <project.tile.sonar.token></project.tile.sonar.token>
-    <project.tile.sonar.branchName>master</project.tile.sonar.branchName>
+    <!-- maven tile properties -->
+    <maven-tile.tile-node-exec.sonar.projectKey>${sonar.projectKey}</maven-tile.tile-node-exec.sonar.projectKey>
+    <maven-tile.tile-node-exec.sonar.projectName>${sonar.projectName}</maven-tile.tile-node-exec.sonar.projectName>
+    <maven-tile.tile-node-exec.sonar.organization>${sonar.organization}</maven-tile.tile-node-exec.sonar.organization>
+    <maven-tile.tile-node-exec.sonar.host>${sonar.host}</maven-tile.tile-node-exec.sonar.host>
+    <maven-tile.tile-node-exec.sonar.token>${sonar.token}</maven-tile.tile-node-exec.sonar.token>
+    <maven-tile.tile-node-exec.sonar.password>${sonar.password}</maven-tile.tile-node-exec.sonar.password>
+    <maven-tile.tile-node-exec.sonar.branchName>${sonar.branchName}</maven-tile.tile-node-exec.sonar.branchName>
+    <maven-tile.tile-node-exec.sonar.maxRetry>10</maven-tile.tile-node-exec.sonar.maxRetry>
+    <maven-tile.tile-node-exec.sonar.debug>false</maven-tile.tile-node-exec.sonar.debug>
 
-    <maven-tile.node.sonar.projectKey>${project.tile.sonar.projectKey}</maven-tile.node.sonar.projectKey>
-    <maven-tile.node.sonar.projectName>${project.tile.sonar.projectName}</maven-tile.node.sonar.projectName>
-    <maven-tile.node.sonar.organization>${project.tile.sonar.organization}</maven-tile.node.sonar.organization>
-    <maven-tile.node.sonar.host>${project.tile.sonar.host}</maven-tile.node.sonar.host>
-    <maven-tile.node.sonar.debug>${project.tile.sonar.debug}</maven-tile.node.sonar.debug>
-    <maven-tile.node.sonar.token>${project.tile.sonar.token}</maven-tile.node.sonar.token>
-    <maven-tile.node.sonar.password></maven-tile.node.sonar.password>
-    <maven-tile.node.sonar.maxRetry>10</maven-tile.node.sonar.maxRetry>
-    <maven-tile.node.sonar.branchName>${project.tile.sonar.branchName}</maven-tile.node.sonar.branchName>
   </properties>
 
   <build>
@@ -79,7 +83,7 @@
 
   <profiles>
     <profile>
-      <id>eslint</id>
+      <id>node-eslint</id>
       <build>
         <plugins>
           <plugin>
@@ -126,13 +130,13 @@
                     <argument>sonar</argument>
                   </arguments>
                   <environmentVariables>
-                    <SONAR_HOST>${maven-tile.node.sonar.host}</SONAR_HOST>
-                    <SONAR_TOKEN>${maven-tile.node.sonar.token}</SONAR_TOKEN>
-                    <SONAR_KEY>${maven-tile.node.sonar.projectKey}</SONAR_KEY>
-                    <SONAR_NAME>${maven-tile.node.sonar.projectName}</SONAR_NAME>
-                    <SONAR_PASS>${maven-tile.node.sonar.password}</SONAR_PASS>
-                    <SONAR_ORGANIZATION>${maven-tile.node.sonar.organization}</SONAR_ORGANIZATION>
-                    <SONAR_BRANCH>${maven-tile.node.sonar.branchName}</SONAR_BRANCH>
+                    <SONAR_HOST>${maven-tile.tile-node-exec.sonar.host}</SONAR_HOST>
+                    <SONAR_TOKEN>${maven-tile.tile-node-exec.sonar.token}</SONAR_TOKEN>
+                    <SONAR_KEY>${maven-tile.tile-node-exec.sonar.projectKey}</SONAR_KEY>
+                    <SONAR_NAME>${maven-tile.tile-node-exec.sonar.projectName}</SONAR_NAME>
+                    <SONAR_PASS>${maven-tile.tile-node-exec.sonar.password}</SONAR_PASS>
+                    <SONAR_ORGANIZATION>${maven-tile.tile-node-exec.sonar.organization}</SONAR_ORGANIZATION>
+                    <SONAR_BRANCH>${maven-tile.tile-node-exec.sonar.branchName}</SONAR_BRANCH>
                   </environmentVariables>
                 </configuration>
               </execution>
