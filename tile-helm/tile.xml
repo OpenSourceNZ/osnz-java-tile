@@ -2,12 +2,9 @@
 <project>
 
   <properties>
-    <project.tile.plugins.maven-resources-plugin.version>3.1.0</project.tile.plugins.maven-resources-plugin.version>
-
-    <project.tile.helm.resource.delimiter>@</project.tile.helm.resource.delimiter>
-    <project.tile.helm.source>${project.basedir}/cloudbuild/helm</project.tile.helm.source>
-    <project.tile.helm.output>${project.build.directory}/cloudbuild/helm</project.tile.helm.output>
-
+    <project.tile.maven-resources-plugin.version>3.1.0</project.tile.maven-resources-plugin.version>
+    <maven-tile.tile-helm.helm.source>${project.basedir}/src/main/resources/helm</maven-tile.tile-helm.helm.source>
+    <maven-tile.tile-helm.helm.output>${project.build.directory}/helm</maven-tile.tile-helm.helm.output>
   </properties>
 
   <build>
@@ -15,12 +12,9 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>${project.tile.plugins.maven-resources-plugin.version}</version>
+        <version>${project.tile.maven-resources-plugin.version}</version>
         <configuration>
-          <delimiters>
-            <delimiter>${project.tile.helm.resource.delimiter}</delimiter>
-          </delimiters>
-          <useDefaultDelimiters>false</useDefaultDelimiters>
+          <useDefaultDelimiters>true</useDefaultDelimiters>
         </configuration>
         <executions>
           <execution>
@@ -30,10 +24,10 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.tile.helm.output}</outputDirectory>
+              <outputDirectory>${maven-tile.tile-helm.helm.output}</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.tile.helm.source}</directory>
+                  <directory>${maven-tile.tile-helm.helm.source}</directory>
                   <filtering>true</filtering>
                 </resource>
               </resources>
