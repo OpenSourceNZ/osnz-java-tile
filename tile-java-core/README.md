@@ -1,15 +1,32 @@
-# Java Tile
+# Core Java Tile
 
-Java Tile for all Java-based artifacts.
+Core Java Tile for all Java-based artifacts.
 
 
 
 ```xml
-<properties>
-  <project.tile.maven-resources-plugin.version>3.1.0</project.tile.maven-resources-plugin.version>
-  <maven-tile.tile-helm.helm.source>${project.basedir}/src/main/resources/helm</maven-tile.tile-helm.helm.source>
-  <maven-tile.tile-helm.helm.output>${project.build.directory}/helm</maven-tile.tile-helm.helm.output>
-</properties>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <sonar.language>java</sonar.language>
+    <java.version>1.8</java.version>
+
+    <project.tiles.maven-source-plugin.version>3.2.1</project.tiles.maven-source-plugin.version>
+    <project.tiles.maven-compiler-plugin.version>3.8.1</project.tiles.maven-compiler-plugin.version>
+    <project.tiles.maven-compiler-plugin.compile.source>${java.version}</project.tiles.maven-compiler-plugin.compile.source>
+    <project.tiles.maven-compiler-plugin.compile.target>${java.version}</project.tiles.maven-compiler-plugin.compile.target>
+    <project.tiles.maven-compiler-plugin.compile.debug>false</project.tiles.maven-compiler-plugin.compile.debug>
+    <project.tiles.maven-compiler-plugin.compile.optimize>true</project.tiles.maven-compiler-plugin.compile.optimize>
+
+    <project.tiles.maven-surefire-plugin.version>3.0.0-M4</project.tiles.maven-surefire-plugin.version>
+    <project.tiles.maven-surefire-plugin.use-system-classloader>true</project.tiles.maven-surefire-plugin.use-system-classloader>
+    <project.tiles.maven-surefire-plugin.useManifestOnlyJar>false</project.tiles.maven-surefire-plugin.useManifestOnlyJar>
+    <project.tiles.maven-surefire-plugin.failIfNoTests>false</project.tiles.maven-surefire-plugin.failIfNoTests>
+
+    <project.tiles.modernizer-maven-plugin.version>2.1.0</project.tiles.modernizer-maven-plugin.version>
+
+    <project.tiles.maven-javadoc-plugin.version>3.2.0</project.tiles.maven-javadoc-plugin.version>
+    <project.tiles.jacoco-maven-plugin.version>0.8.5</project.tiles.jacoco-maven-plugin.version>
+  </properties>
 
 ...
 
@@ -23,7 +40,7 @@ Java Tile for all Java-based artifacts.
       <configuration>
         <filtering>false</filtering>
         <tiles>
-          <tile>io.osnz.tiles:tile-helm:[1,2)</tile>
+          <tile>io.osnz.tiles:tile-java-core:[1,2)</tile>
         </tiles>
       </configuration>
     </plugin>
