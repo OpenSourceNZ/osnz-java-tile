@@ -9,7 +9,7 @@ A tile based on `jib-maven-plugin` to build the docker image.
 ...
 
 <properties>
-    <docker.mainClass>io.osnz.Application</.docker.mainClass>
+    <docker.mainClass>io.osnz.Application</docker.mainClass>
     <docker.appProperties>-P/etc/app/app.properties</docker.appProperties>
     <docker.secretProperties>-P/etc/app/secret.properties</docker.secretProperties>
     <docker.argument1>-DdevMode=false</docker.argument1>
