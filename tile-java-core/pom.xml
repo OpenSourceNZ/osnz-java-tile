@@ -10,7 +10,7 @@
   <groupId>io.osnz.tiles</groupId>
   <artifactId>tile-java-core</artifactId>
   <packaging>tile</packaging>
-  <version>1.4</version>
+  <version>1.5-SNAPSHOT</version>
 
   <name>tile-java-core</name>
   <description>tile-java-core</description>
@@ -20,7 +20,7 @@
     <url>https://github.com/OpenSourceNZ/osnz-java-tile</url>
     <connection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</connection>
     <developerConnection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</developerConnection>
-    <tag>tile-java-core-1.4</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <build>
