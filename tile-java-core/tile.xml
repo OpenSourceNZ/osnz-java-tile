@@ -56,7 +56,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>${project.tiles.plugins.maven-surefire-plugin.version}</version>
+        <version>${project.tiles.maven-surefire-plugin.version}</version>
         <configuration>
           <useSystemClassLoader>${project.tiles.maven-surefire-plugin.use-system-classloader}</useSystemClassLoader>
           <useManifestOnlyJar>${project.tiles.maven-surefire-plugin.useManifestOnlyJar}</useManifestOnlyJar>

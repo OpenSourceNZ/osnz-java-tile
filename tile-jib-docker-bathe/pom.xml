@@ -1,6 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>io.osnz.parent</groupId>
+    <artifactId>osnz-parent</artifactId>
+    <version>2</version>
+  </parent>
+
   <groupId>io.osnz.tiles</groupId>
   <artifactId>tile-jib-docker-bathe</artifactId>
   <packaging>tile</packaging>
@@ -8,49 +14,25 @@
 
   <name>tile-jib-docker-bathe</name>
   <description>jib-docker-bathe-tile</description>
-  <url>https://github.com/kdeng/osnz-java/io.osnz.tiles/tile-jib-docker-bathe</url>
-
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-
-  <developers>
-    <developer>
-      <id>kdeng</id>
-      <name>Kefeng Deng</name>
-      <email>deng@51any.com</email>
-    </developer>
-  </developers>
+  <url>https://github.com/OpenSourceNZ/osnz-java-tile</url>
 
   <scm>
-    <url>https://github.com/kdeng/osnz-java/io.osnz.tiles/tile-jib-docker</url>
-    <connection>scm:git:git@github.com:kdeng/osnz-java/io.osnz.tiles/tile-jib-docker.git</connection>
-    <developerConnection>scm:git:git@github.com:kdeng/osnz-java/io.osnz.tiles/tile-jib-docker.git</developerConnection>
+    <url>https://github.com/OpenSourceNZ/osnz-java-tile</url>
+    <connection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</connection>
+    <developerConnection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
-
-  <properties>
-    <!-- distribution information -->
-    <repository.release.id>oss-release</repository.release.id>
-    <repository.release.url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</repository.release.url>
-    <repository.snapshot.id>oss-release</repository.snapshot.id>
-    <repository.snapshot.url>https://oss.sonatype.org/content/repositories/snapshots/</repository.snapshot.url>
-  </properties>
 
   <build>
     <plugins>
       <plugin>
         <groupId>io.repaint.maven</groupId>
         <artifactId>tiles-maven-plugin</artifactId>
-        <version>2.15</version>
+        <version>2.16</version>
         <extensions>true</extensions>
         <configuration>
           <tiles>
-            <tile>io.osnz.tiles:tile-release:[1,2)</tile>
+            <tile>io.osnz.tiles:tile-release:[1,)</tile>
           </tiles>
         </configuration>
       </plugin>
