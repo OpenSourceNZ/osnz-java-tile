@@ -2,60 +2,89 @@
 <project>
 
   <properties>
-    <project.tile.plugins.jib-maven-plugin.version>1.8.0</project.tile.plugins.jib-maven-plugin.version>
 
     <!-- project settings -->
-    <project.tile.docker.registry>docker.io</project.tile.docker.registry>
-    <project.tile.docker.from>openjdk:11-jre-slim-stretch</project.tile.docker.from>
-    <project.tile.docker.name>${project.artifactId}</project.tile.docker.name>
-    <project.tile.docker.fullName>${project.tile.docker.registry}/${project.tile.docker.name}</project.tile.docker.fullName>
-    <project.tile.docker.currentTag>${project.version}</project.tile.docker.currentTag>
-    <project.tile.docker.latestTag>latest</project.tile.docker.latestTag>
-    <project.tile.docker.port>8080</project.tile.docker.port>
+    <docker.baseImage>openjdk:11-jre-slim-stretch</docker.baseImage>
+    <docker.registry>docker.io</docker.registry>
+    <docker.imageName>${project.artifactId}</docker.imageName>
+    <docker.fullName>${docker.registry}/${docker.imageName}</docker.fullName>
+    <docker.releaseTag>${project.version}</docker.releaseTag>
+    <docker.latestTag>latest</docker.latestTag>
+    <docker.port>8080</docker.port>
+    <docker.argument1>-Dspring.devtools.add-properties=false</docker.argument1>
+    <docker.argument2>-Dspring.jmx.enabled=false</docker.argument2>
+    <docker.argument3>-DdevMode=false</docker.argument3>
+    <docker.argument4>-Denv=PROD</docker.argument4>
+    <docker.jvmFlag1>-noverify</docker.jvmFlag1>
+    <docker.jvmFlag2>--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED</docker.jvmFlag2>
+    <docker.jvmFlag3>--add-opens=java.base/java.nio=ALL-UNNAMED</docker.jvmFlag3>
+
+    <docker.auth.username>changeme</docker.auth.username>
+    <docker.auth.password>changeme</docker.auth.password>
 
     <!-- tile settings -->
-    <maven-tile.jib-maven.docker.image.from>${project.tile.docker.from}</maven-tile.jib-maven.docker.image.from>
-    <maven-tile.jib-maven.docker.image.name>${project.tile.docker.fullName}</maven-tile.jib-maven.docker.image.name>
-    <maven-tile.jib-maven.docker.image.currentTag>${project.tile.docker.currentTag}</maven-tile.jib-maven.docker.image.currentTag>
-    <maven-tile.jib-maven.docker.image.latestTag>${project.tile.docker.latestTag}</maven-tile.jib-maven.docker.image.latestTag>
-    <maven-tile.jib-maven.docker.image.port>${project.tile.docker.port}</maven-tile.jib-maven.docker.image.port>
+    <maven-tile.tile-jib-docker-spring-boot.docker.image.baseImage>${docker.baseImage}</maven-tile.tile-jib-docker-spring-boot.docker.image.baseImage>
+    <maven-tile.tile-jib-docker-spring-boot.docker.image.fullName>${docker.fullName}</maven-tile.tile-jib-docker-spring-boot.docker.image.fullName>
+    <maven-tile.tile-jib-docker-spring-boot.docker.image.releaseTag>${docker.releaseTag}</maven-tile.tile-jib-docker-spring-boot.docker.image.releaseTag>
+    <maven-tile.tile-jib-docker-spring-boot.docker.image.latestTag>${docker.latestTag}</maven-tile.tile-jib-docker-spring-boot.docker.image.latestTag>
+    <maven-tile.tile-jib-docker-spring-boot.docker.image.port>${docker.port}</maven-tile.tile-jib-docker-spring-boot.docker.image.port>
 
-    <maven-tile.jib-maven.docker.app.argument1>-Dspring.devtools.add-properties=false</maven-tile.jib-maven.docker.app.argument1>
-    <maven-tile.jib-maven.docker.app.argument2>-Dspring.jmx.enabled=false</maven-tile.jib-maven.docker.app.argument2>
-    <maven-tile.jib-maven.docker.jvmFlag1>-noverify</maven-tile.jib-maven.docker.jvmFlag1>
-    <maven-tile.jib-maven.docker.jvmFlag2>--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED</maven-tile.jib-maven.docker.jvmFlag2>
-    <maven-tile.jib-maven.docker.jvmFlag3>--add-opens=java.base/java.nio=ALL-UNNAMED</maven-tile.jib-maven.docker.jvmFlag3>
+    <maven-tile.tile-jib-docker-spring-boot.docker.app.argument1>${docker.argument1}</maven-tile.tile-jib-docker-spring-boot.docker.app.argument1>
+    <maven-tile.tile-jib-docker-spring-boot.docker.app.argument2>${docker.argument2}</maven-tile.tile-jib-docker-spring-boot.docker.app.argument2>
+    <maven-tile.tile-jib-docker-spring-boot.docker.app.argument3>${docker.argument3}</maven-tile.tile-jib-docker-spring-boot.docker.app.argument3>
+    <maven-tile.tile-jib-docker-spring-boot.docker.app.argument4>${docker.argument4}</maven-tile.tile-jib-docker-spring-boot.docker.app.argument4>
+    <maven-tile.tile-jib-docker-spring-boot.docker.jvmFlag1>${docker.jvmFlag1}</maven-tile.tile-jib-docker-spring-boot.docker.jvmFlag1>
+    <maven-tile.tile-jib-docker-spring-boot.docker.jvmFlag2>${docker.jvmFlag2}</maven-tile.tile-jib-docker-spring-boot.docker.jvmFlag2>
+    <maven-tile.tile-jib-docker-spring-boot.docker.jvmFlag3>${docker.jvmFlag3}</maven-tile.tile-jib-docker-spring-boot.docker.jvmFlag3>
+
+    <!-- plugin version -->
+    <project.tiles.spring-boot-maven-plugin.version>2.2.6.RELEASE</project.tiles.spring-boot-maven-plugin.version>
+    <project.tiles.jib-maven-plugin.version>2.2.0</project.tiles.jib-maven-plugin.version>
   </properties>
 
   <build>
     <plugins>
       <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>${project.tiles.spring-boot-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>jib-maven-plugin</artifactId>
-        <version>${project.tile.plugins.jib-maven-plugin.version}</version>
+        <version>${project.tiles.jib-maven-plugin.version}</version>
         <configuration>
           <from>
-            <image>${maven-tile.jib-maven.docker.image.from}</image>
+            <image>${maven-tile.tile-jib-docker-spring-boot.docker.image.baseImage}</image>
           </from>
           <container>
             <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
             <ports>
-              <port>${maven-tile.jib-maven.docker.image.port}</port>
+              <port>${maven-tile.tile-jib-docker-spring-boot.docker.image.port}</port>
             </ports>
             <jvmFlags>
-              <jvmFlag>${maven-tile.jib-maven.docker.jvmFlag1}</jvmFlag>
-              <jvmFlag>${maven-tile.jib-maven.docker.jvmFlag2}</jvmFlag>
-              <jvmFlag>${maven-tile.jib-maven.docker.jvmFlag3}</jvmFlag>
+              <jvmFlag>${maven-tile.tile-jib-docker-spring-boot.docker.jvmFlag1}</jvmFlag>
+              <jvmFlag>${maven-tile.tile-jib-docker-spring-boot.docker.jvmFlag2}</jvmFlag>
+              <jvmFlag>${maven-tile.tile-jib-docker-spring-boot.docker.jvmFlag3}</jvmFlag>
             </jvmFlags>
             <args>
-              <arg>${maven-tile.jib-maven.docker.app.argument1}</arg>
-              <arg>${maven-tile.jib-maven.docker.app.argument2}</arg>
+              <arg>${maven-tile.tile-jib-docker-spring-boot.docker.app.argument1}</arg>
+              <arg>${maven-tile.tile-jib-docker-spring-boot.docker.app.argument2}</arg>
+              <arg>${maven-tile.tile-jib-docker-spring-boot.docker.app.argument3}</arg>
+              <arg>${maven-tile.tile-jib-docker-spring-boot.docker.app.argument4}</arg>
             </args>
           </container>
           <to>
-            <image>${maven-tile.jib-maven.docker.image.name}:${maven-tile.jib-maven.docker.image.currentTag}</image>
+            <image>${maven-tile.tile-jib-docker-spring-boot.docker.image.fullName}:${maven-tile.tile-jib-docker-spring-boot.docker.image.releaseTag}</image>
             <tags>
-              <tag>${maven-tile.jib-maven.docker.image.latestTag}</tag>
+              <tag>${maven-tile.tile-jib-docker-spring-boot.docker.image.latestTag}</tag>
             </tags>
           </to>
         </configuration>
