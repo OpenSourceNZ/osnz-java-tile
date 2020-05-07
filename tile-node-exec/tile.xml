@@ -83,7 +83,7 @@
 
   <profiles>
     <profile>
-      <id>node-eslint</id>
+      <id>node-lint</id>
       <build>
         <plugins>
           <plugin>
@@ -91,16 +91,16 @@
             <artifactId>exec-maven-plugin</artifactId>
             <executions>
               <execution>
-                <id>npm run eslint (validate)</id>
+                <id>npm run lint (test)</id>
                 <goals>
                   <goal>exec</goal>
                 </goals>
-                <phase>validate</phase>
+                <phase>test</phase>
                 <configuration>
                   <executable>npm</executable>
                   <arguments>
                     <argument>run</argument>
-                    <argument>eslint</argument>
+                    <argument>lint</argument>
                   </arguments>
                 </configuration>
               </execution>
@@ -118,11 +118,11 @@
             <artifactId>exec-maven-plugin</artifactId>
             <executions>
               <execution>
-                <id>npm run sonar (test)</id>
+                <id>npm run sonar (verify)</id>
                 <goals>
                   <goal>exec</goal>
                 </goals>
-                <phase>test</phase>
+                <phase>verify</phase>
                 <configuration>
                   <executable>npm</executable>
                   <arguments>
@@ -154,11 +154,11 @@
             <artifactId>exec-maven-plugin</artifactId>
             <executions>
               <execution>
-                <id>npm run report (test)</id>
+                <id>npm run report (verify)</id>
                 <goals>
                   <goal>exec</goal>
                 </goals>
-                <phase>test</phase>
+                <phase>verify</phase>
                 <configuration>
                   <executable>npm</executable>
                   <arguments>
