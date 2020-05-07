@@ -2,20 +2,31 @@
 <project>
 
   <properties>
-    <docker.auth.username>changeme</docker.auth.username>
-    <docker.auth.password>changeme</docker.auth.password>
+
     <docker.registry>docker.io/kdeng</docker.registry>
     <docker.imageName>${project.artifactId}</docker.imageName>
     <docker.imageFullName>${docker.registry}/${docker.imageName}</docker.imageFullName>
-    <docker.imageTag>${project.version}</docker.imageTag>
+    <docker.releaseTag>${project.version}</docker.releaseTag>
+    <docker.latestTag>latest</docker.latestTag>
+
     <docker.dockerFile>${project.basedir}/Dockerfile</docker.dockerFile>
     <docker.contextDir>${project.basedir}</docker.contextDir>
 
-    <project.tile.docker.fullName>${docker.imageFullName}</project.tile.docker.fullName>
-    <project.tile.docker.currentTag>${docker.imageTag}</project.tile.docker.currentTag>
-    <project.tile.docker.latestTag>latest</project.tile.docker.latestTag>
-    <project.tile.docker.dockerFile>${docker.dockerFile}</project.tile.docker.dockerFile>
-    <project.tile.docker.contextDir>${docker.contextDir}</project.tile.docker.contextDir>
+    <docker.auth.username>changeme</docker.auth.username>
+    <docker.auth.password>changeme</docker.auth.password>
+
+    <!-- plugin version docker-maven-plugin -->
+    <project.tiles.docker-maven-plugin.version>0.33.0</project.tiles.docker-maven-plugin.version>
+
+    <!-- maven tile docker properties -->
+    <maven-tile.tile-docker-maven.docker.fullName>${docker.imageFullName}</maven-tile.tile-docker-maven.docker.fullName>
+    <maven-tile.tile-docker-maven.docker.releaseTag>${docker.releaseTag}</maven-tile.tile-docker-maven.docker.releaseTag>
+    <maven-tile.tile-docker-maven.docker.latestTag>${docker.latestTag}</maven-tile.tile-docker-maven.docker.latestTag>
+    <maven-tile.tile-docker-maven.docker.contextDir>${docker.contextDir}</maven-tile.tile-docker-maven.docker.contextDir>
+    <maven-tile.tile-docker-maven.docker.dockerFile>${docker.dockerFile}</maven-tile.tile-docker-maven.docker.dockerFile>
+    <maven-tile.tile-docker-maven.docker.auth.username>${docker.auth.username}</maven-tile.tile-docker-maven.docker.auth.username>
+    <maven-tile.tile-docker-maven.docker.auth.password>${docker.auth.password}</maven-tile.tile-docker-maven.docker.auth.password>
+
   </properties>
 
   <build>
@@ -23,26 +34,26 @@
       <plugin>
         <groupId>io.fabric8</groupId>
         <artifactId>docker-maven-plugin</artifactId>
-        <version>0.33.0</version>
+        <version>${project.tiles.docker-maven-plugin.version}</version>
         <executions>
           <execution>
             <id>build-docker-image</id>
             <goals>
               <goal>build</goal>
             </goals>
-            <phase>package</phase>
+            <phase>install</phase>
           </execution>
         </executions>
         <configuration>
           <images>
             <image>
-              <name>${project.tile.docker.fullName}:${project.tile.docker.currentTag}</name>
+              <name>${maven-tile.tile-docker-maven.docker.fullName}:${maven-tile.tile-docker-maven.docker.releaseTag}</name>
               <build>
-                <contextDir>${project.tile.docker.contextDir}</contextDir>
-                <dockerFile>${project.tile.docker.dockerFile}</dockerFile>
-                <filter>@</filter>
+                <contextDir>${maven-tile.tile-docker-maven.docker.contextDir}</contextDir>
+                <dockerFile>${maven-tile.tile-docker-maven.docker.dockerFile}</dockerFile>
+                <filter>false</filter>
                 <tags>
-                  <tag>${project.tile.docker.latestTag}</tag>
+                  <tag>${maven-tile.tile-docker-maven.docker.latestTag}</tag>
                 </tags>
               </build>
             </image>
@@ -90,8 +101,8 @@
                 </goals>
                 <configuration>
                   <authConfig>
-                    <username>${docker.auth.username}</username>
-                    <password>${docker.auth.password}</password>
+                    <username>${maven-tile.tile-docker-maven.docker.auth.username}</username>
+                    <password>${maven-tile.tile-docker-maven.docker.auth.password}</password>
                   </authConfig>
                 </configuration>
               </execution>
