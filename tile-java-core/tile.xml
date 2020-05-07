@@ -6,19 +6,22 @@
     <sonar.language>java</sonar.language>
     <java.version>1.8</java.version>
 
-    <project.tile.plugins.maven-source-plugin.version>3.2.0</project.tile.plugins.maven-source-plugin.version>
-    <project.tile.plugins.maven-compiler-plugin.version>3.8.1</project.tile.plugins.maven-compiler-plugin.version>
-    <project.tile.plugins.compile.source>${java.version}</project.tile.plugins.compile.source>
-    <project.tile.plugins.compile.target>${java.version}</project.tile.plugins.compile.target>
-    <project.tile.plugins.compile.plugin.debug>false</project.tile.plugins.compile.plugin.debug>
-    <project.tile.plugins.compile.plugin.optimize>true</project.tile.plugins.compile.plugin.optimize>
+    <project.tiles.maven-source-plugin.version>3.2.1</project.tiles.maven-source-plugin.version>
+    <project.tiles.maven-compiler-plugin.version>3.8.1</project.tiles.maven-compiler-plugin.version>
+    <project.tiles.maven-compiler-plugin.compile.source>${java.version}</project.tiles.maven-compiler-plugin.compile.source>
+    <project.tiles.maven-compiler-plugin.compile.target>${java.version}</project.tiles.maven-compiler-plugin.compile.target>
+    <project.tiles.maven-compiler-plugin.compile.debug>false</project.tiles.maven-compiler-plugin.compile.debug>
+    <project.tiles.maven-compiler-plugin.compile.optimize>true</project.tiles.maven-compiler-plugin.compile.optimize>
 
-    <project.tile.plugins.maven-surefire-plugin.version>3.0.0-M4</project.tile.plugins.maven-surefire-plugin.version>
-    <project.tile.plugins.maven-surefire-plugin.use-system-classloader>true</project.tile.plugins.maven-surefire-plugin.use-system-classloader>
-    <project.tile.plugins.modernizer-maven-plugin.version>1.8.0</project.tile.plugins.modernizer-maven-plugin.version>
+    <project.tiles.maven-surefire-plugin.version>3.0.0-M4</project.tiles.maven-surefire-plugin.version>
+    <project.tiles.maven-surefire-plugin.use-system-classloader>true</project.tiles.maven-surefire-plugin.use-system-classloader>
+    <project.tiles.maven-surefire-plugin.useManifestOnlyJar>false</project.tiles.maven-surefire-plugin.useManifestOnlyJar>
+    <project.tiles.maven-surefire-plugin.failIfNoTests>false</project.tiles.maven-surefire-plugin.failIfNoTests>
 
-    <project.tile.plugins.maven-javadoc-plugin.version>3.1.1</project.tile.plugins.maven-javadoc-plugin.version>
-    <project.tile.plugins.jacoco-maven-plugin.version>0.8.5</project.tile.plugins.jacoco-maven-plugin.version>
+    <project.tiles.modernizer-maven-plugin.version>2.1.0</project.tiles.modernizer-maven-plugin.version>
+
+    <project.tiles.maven-javadoc-plugin.version>3.2.0</project.tiles.maven-javadoc-plugin.version>
+    <project.tiles.jacoco-maven-plugin.version>0.8.5</project.tiles.jacoco-maven-plugin.version>
   </properties>
 
   <build>
@@ -26,7 +29,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>${project.tile.plugins.maven-source-plugin.version}</version>
+        <version>${project.tiles.maven-source-plugin.version}</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -41,23 +44,23 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>${project.tile.plugins.maven-compiler-plugin.version}</version>
+        <version>${project.tiles.maven-compiler-plugin.version}</version>
         <configuration>
-          <source>${project.tile.plugins.compile.source}</source>
-          <target>${project.tile.plugins.compile.target}</target>
-          <optimize>${project.tile.plugins.compile.plugin.optimize}</optimize>
-          <debug>${project.tile.plugins.compile.plugin.debug}</debug>
+          <source>${project.tiles.maven-compiler-plugin.compile.source}</source>
+          <target>${project.tiles.maven-compiler-plugin.compile.target}</target>
+          <optimize>${project.tiles.maven-compiler-plugin.compile.optimize}</optimize>
+          <debug>${project.tiles.maven-compiler-plugin.compile.debug}</debug>
         </configuration>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>${project.tile.plugins.maven-surefire-plugin.version}</version>
+        <version>${project.tiles.plugins.maven-surefire-plugin.version}</version>
         <configuration>
-          <useSystemClassLoader>${project.tile.plugins.maven-surefire-plugin.use-system-classloader}</useSystemClassLoader>
-          <useManifestOnlyJar>false</useManifestOnlyJar>
-          <failIfNoTests>false</failIfNoTests>
+          <useSystemClassLoader>${project.tiles.maven-surefire-plugin.use-system-classloader}</useSystemClassLoader>
+          <useManifestOnlyJar>${project.tiles.maven-surefire-plugin.useManifestOnlyJar}</useManifestOnlyJar>
+          <failIfNoTests>${project.tiles.maven-surefire-plugin.failIfNoTests}</failIfNoTests>
           <includes>
             <include>**/*Test.java</include>
             <include>**/*Spec.java</include>
@@ -68,7 +71,7 @@
       <plugin>
         <groupId>org.gaul</groupId>
         <artifactId>modernizer-maven-plugin</artifactId>
-        <version>${project.tile.plugins.modernizer-maven-plugin.version}</version>
+        <version>${project.tiles.modernizer-maven-plugin.version}</version>
         <configuration>
           <failOnViolations>false</failOnViolations>
           <javaVersion>${java.version}</javaVersion>
@@ -101,7 +104,7 @@
           <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
-            <version>${project.tile.plugins.jacoco-maven-plugin.version}</version>
+            <version>${project.tiles.jacoco-maven-plugin.version}</version>
             <executions>
               <execution>
                 <id>prepare-agent</id>
@@ -121,7 +124,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
-            <version>${project.tile.plugins.maven-javadoc-plugin.version}</version>
+            <version>${project.tiles.maven-javadoc-plugin.version}</version>
             <executions>
               <execution>
                 <id>attach-java-docs</id>
