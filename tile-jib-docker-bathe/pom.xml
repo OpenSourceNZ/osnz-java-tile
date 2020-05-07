@@ -10,7 +10,7 @@
   <groupId>io.osnz.tiles</groupId>
   <artifactId>tile-jib-docker-bathe</artifactId>
   <packaging>tile</packaging>
-  <version>1.2-SNAPSHOT</version>
+  <version>1.2</version>
 
   <name>tile-jib-docker-bathe</name>
   <description>jib-docker-bathe-tile</description>
@@ -20,7 +20,7 @@
     <url>https://github.com/OpenSourceNZ/osnz-java-tile</url>
     <connection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</connection>
     <developerConnection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>tile-jib-docker-bathe-1.2</tag>
   </scm>
 
   <build>
