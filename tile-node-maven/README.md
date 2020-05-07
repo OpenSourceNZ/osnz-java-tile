@@ -13,7 +13,7 @@ This tile plugin is used to compile node-based artifact.
     "build": "",
     "lint": "",
     "sonar": "",
-    "report": "",
+    "report": ""
   }
 }
 ```
@@ -21,6 +21,10 @@ This tile plugin is used to compile node-based artifact.
 ### Properties in pom.xml
 
 ```xml
+<properties>
+  <node.version>v12.16.3</node.version>
+  <npm.version>6.14.4</npm.version>
+
   <sonar.projectKey>${project.artifactId}</sonar.projectKey>
   <sonar.projectName>${project.name}</sonar.projectName>
   <sonar.organization>opensourcenz</sonar.organization>
@@ -28,12 +32,13 @@ This tile plugin is used to compile node-based artifact.
   <sonar.branchName>master</sonar.branchName>
   <sonar.token></sonar.token>
   <sonar.password></sonar.password>
+</properties>
 ```
 
 ### Plugin in pom.xml
 
 ```xml
-  <build>
+<build>
     <plugins>
       ...
       <plugin>
@@ -43,12 +48,12 @@ This tile plugin is used to compile node-based artifact.
         <extensions>true</extensions>
         <configuration>
           <tiles>
-            <tile>io.osnz.tiles:tile-node-exec:[1.1,2)</tile>
+            <tile>io.osnz.tiles:tile-node-maven:[1.1,2)</tile>
           </tiles>
         </configuration>
       </plugin>
     </plugins>
-  </build>
+</build>
 ```
 
 ## Execution with profiles

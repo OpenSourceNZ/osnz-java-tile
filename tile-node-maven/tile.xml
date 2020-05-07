@@ -1,0 +1,168 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <properties>
+
+    <node.version>v12.16.3</node.version>
+    <npm.version>6.14.4</npm.version>
+
+    <sonar.projectKey>${project.artifactId}</sonar.projectKey>
+    <sonar.projectName>${project.name}</sonar.projectName>
+    <sonar.organization>opensourcenz</sonar.organization>
+    <sonar.host>https://sonarcloud.io</sonar.host>
+    <sonar.branchName>master</sonar.branchName>
+    <sonar.token></sonar.token>
+    <sonar.password></sonar.password>
+
+    <!-- maven plugin version -->
+    <project.tiles.frontend-maven-plugin.version>1.10.0</project.tiles.frontend-maven-plugin.version>
+
+    <!-- maven tile properties -->
+    <maven-tile.tile-node-exec.nodeVersion>${node.version}</maven-tile.tile-node-exec.nodeVersion>
+    <maven-tile.tile-node-exec.npmVersion>${npm.version}</maven-tile.tile-node-exec.npmVersion>
+
+    <maven-tile.tile-node-exec.sonar.projectKey>${sonar.projectKey}</maven-tile.tile-node-exec.sonar.projectKey>
+    <maven-tile.tile-node-exec.sonar.projectName>${sonar.projectName}</maven-tile.tile-node-exec.sonar.projectName>
+    <maven-tile.tile-node-exec.sonar.organization>${sonar.organization}</maven-tile.tile-node-exec.sonar.organization>
+    <maven-tile.tile-node-exec.sonar.host>${sonar.host}</maven-tile.tile-node-exec.sonar.host>
+    <maven-tile.tile-node-exec.sonar.token>${sonar.token}</maven-tile.tile-node-exec.sonar.token>
+    <maven-tile.tile-node-exec.sonar.password>${sonar.password}</maven-tile.tile-node-exec.sonar.password>
+    <maven-tile.tile-node-exec.sonar.branchName>${sonar.branchName}</maven-tile.tile-node-exec.sonar.branchName>
+
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>${project.tiles.frontend-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>install node and npm (generate-resources)</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+            <phase>generate-resources</phase>
+          </execution>
+          <execution>
+            <id>npm install (generate-resources)</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <arguments>install</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>npm run test (test)</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <arguments>run test</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>npm run build (package)</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <arguments>run build</arguments>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <nodeVersion>v12.16.3</nodeVersion>
+          <npmVersion>6.14.4</npmVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>node-lint</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>npm run lint (test)</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <phase>test</phase>
+                <configuration>
+                  <arguments>run lint</arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>node-sonar</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>npm run sonar (verify)</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <phase>verify</phase>
+                <configuration>
+                  <arguments>run sonar</arguments>
+                  <environmentVariables>
+                    <SONAR_HOST>${maven-tile.tile-node-exec.sonar.host}</SONAR_HOST>
+                    <SONAR_TOKEN>${maven-tile.tile-node-exec.sonar.token}</SONAR_TOKEN>
+                    <SONAR_KEY>${maven-tile.tile-node-exec.sonar.projectKey}</SONAR_KEY>
+                    <SONAR_NAME>${maven-tile.tile-node-exec.sonar.projectName}</SONAR_NAME>
+                    <SONAR_PASS>${maven-tile.tile-node-exec.sonar.password}</SONAR_PASS>
+                    <SONAR_ORGANIZATION>${maven-tile.tile-node-exec.sonar.organization}</SONAR_ORGANIZATION>
+                    <SONAR_BRANCH>${maven-tile.tile-node-exec.sonar.branchName}</SONAR_BRANCH>
+                  </environmentVariables>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>node-report</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>npm run report (verify)</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <phase>verify</phase>
+                <configuration>
+                  <arguments>run report</arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+</project>
