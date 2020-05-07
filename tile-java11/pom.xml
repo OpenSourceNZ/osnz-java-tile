@@ -10,7 +10,7 @@
   <groupId>io.osnz.tiles</groupId>
   <artifactId>tile-java11</artifactId>
   <packaging>tile</packaging>
-  <version>1.3-SNAPSHOT</version>
+  <version>1.3</version>
 
   <name>tile-java11</name>
   <description>tile-java11</description>
@@ -20,7 +20,7 @@
     <url>https://github.com/OpenSourceNZ/osnz-java-tile</url>
     <connection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</connection>
     <developerConnection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>tile-java11-1.3</tag>
   </scm>
 
   <build>
