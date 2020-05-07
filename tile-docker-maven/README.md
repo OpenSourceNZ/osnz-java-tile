@@ -47,14 +47,25 @@ A tile based on `docker-maven-tile` to build the docker image.
 
 ## Execution with profiles
 
+### Build image
+
+```bash
+mvn clean install
+```
+
+### Build image and push image to registry without authentication
+
+
 ```bash
 
-mvn clean verify -Pdocker-push
+mvn clean install -Pdocker-push
 
 ```
 
+### Build image and push to registry with authentication
+
 ```bash
 
-mvn clean verify -Pdocker-auth-push -Ddocker.auth.username=changeme -Ddocker.auth.password=changeme
+mvn clean install -Pdocker-auth-push -Ddocker.auth.username=changeme -Ddocker.auth.password=changeme
 
 ```
