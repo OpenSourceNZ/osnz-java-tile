@@ -4,7 +4,7 @@
     <groupId>io.osnz.tiles</groupId>
     <artifactId>ebean-enhancement-tile</artifactId>
     <packaging>tile</packaging>
-    <version>1.4</version>
+    <version>1.5-SNAPSHOT</version>
 
     <name>ebean-enhancement-tile</name>
     <description>Ebean Maven Enhancement Tile</description>
@@ -30,7 +30,7 @@
         <url>https://github.com/OSNZ/ebean-enhancement-tile</url>
         <connection>scm:git:git@github.com:OSNZ/ebean-enhancement-tile.git</connection>
         <developerConnection>scm:git:git@github.com:OSNZ/ebean-enhancement-tile.git</developerConnection>
-        <tag>ebean-enhancement-tile-1.4</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
