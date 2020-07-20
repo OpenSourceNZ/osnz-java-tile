@@ -9,7 +9,7 @@ A tile based on `docker-maven-tile` to build the docker image.
 ```xml
 <properties>
   <!-- default -->
-  <docker.registry>docker.io/kdeng</docker.registry>
+  <docker.registry>docker.io</docker.registry>
   <docker.imageName>${project.artifactId}</docker.imageName>
   <docker.imageFullName>${docker.registry}/${docker.imageName}</docker.imageFullName>
   <docker.releaseTag>${project.version}</docker.releaseTag>
