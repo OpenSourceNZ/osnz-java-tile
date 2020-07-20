@@ -4,7 +4,7 @@
     <groupId>io.osnz.tiles</groupId>
     <artifactId>kotlin-tile</artifactId>
     <packaging>tile</packaging>
-    <version>2.2-SNAPSHOT</version>
+    <version>2.2</version>
 
     <name>kotlin-tile</name>
     <description>kotlin-tile</description>
@@ -30,7 +30,7 @@
         <url>https://github.com/OSNZ/kotlin-tile</url>
         <connection>scm:git:git@github.com:OSNZ/kotlin-tile.git</connection>
         <developerConnection>scm:git:git@github.com:OSNZ/kotlin-tile.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>kotlin-tile-2.2</tag>
     </scm>
 
     <properties>
