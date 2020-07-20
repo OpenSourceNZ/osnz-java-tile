@@ -5,7 +5,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <codegen-maven-plugin.version>4.2</codegen-maven-plugin.version>
-        <ebean-maven-plugin.version>11.11.2</ebean-maven-plugin.version>
+        <ebean-maven-plugin.version>12.3.7</ebean-maven-plugin.version>
         <ebean-maven-plugin.main.args>debug=0</ebean-maven-plugin.main.args>
         <ebean-maven-plugin.test.args>debug=0</ebean-maven-plugin.test.args>
         <ebean-maven-plugin.main.classSource>${project.build.directory}/classes</ebean-maven-plugin.main.classSource>
