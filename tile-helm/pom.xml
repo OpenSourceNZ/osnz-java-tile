@@ -10,7 +10,7 @@
 
   <groupId>io.osnz.tiles</groupId>
   <artifactId>tile-helm</artifactId>
-  <version>1.1</version>
+  <version>1.2-SNAPSHOT</version>
   <packaging>tile</packaging>
   <name>tile-helm</name>
   <description>tile-helm</description>
@@ -19,7 +19,7 @@
     <url>https://github.com/OpenSourceNZ/osnz-java-tile</url>
     <connection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</connection>
     <developerConnection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</developerConnection>
-    <tag>tile-helm-1.1</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <build>
