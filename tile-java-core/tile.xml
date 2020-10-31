@@ -13,7 +13,7 @@
     <project.tiles.maven-compiler-plugin.compile.debug>false</project.tiles.maven-compiler-plugin.compile.debug>
     <project.tiles.maven-compiler-plugin.compile.optimize>true</project.tiles.maven-compiler-plugin.compile.optimize>
 
-    <project.tiles.maven-surefire-plugin.version>3.0.0-M4</project.tiles.maven-surefire-plugin.version>
+    <project.tiles.maven-surefire-plugin.version>3.0.0-M5</project.tiles.maven-surefire-plugin.version>
     <project.tiles.maven-surefire-plugin.use-system-classloader>true</project.tiles.maven-surefire-plugin.use-system-classloader>
     <project.tiles.maven-surefire-plugin.useManifestOnlyJar>false</project.tiles.maven-surefire-plugin.useManifestOnlyJar>
     <project.tiles.maven-surefire-plugin.failIfNoTests>false</project.tiles.maven-surefire-plugin.failIfNoTests>
@@ -21,7 +21,7 @@
     <project.tiles.modernizer-maven-plugin.version>2.1.0</project.tiles.modernizer-maven-plugin.version>
 
     <project.tiles.maven-javadoc-plugin.version>3.2.0</project.tiles.maven-javadoc-plugin.version>
-    <project.tiles.jacoco-maven-plugin.version>0.8.5</project.tiles.jacoco-maven-plugin.version>
+    <project.tiles.jacoco-maven-plugin.version>0.8.6</project.tiles.jacoco-maven-plugin.version>
   </properties>
 
   <build>

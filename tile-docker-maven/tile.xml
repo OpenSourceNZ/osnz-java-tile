@@ -16,7 +16,7 @@
     <docker.auth.password>changeme</docker.auth.password>
 
     <!-- plugin version docker-maven-plugin -->
-    <project.tiles.docker-maven-plugin.version>0.33.0</project.tiles.docker-maven-plugin.version>
+    <project.tiles.docker-maven-plugin.version>0.34.1</project.tiles.docker-maven-plugin.version>
 
     <!-- maven tile docker properties -->
     <maven-tile.tile-docker-maven.docker.fullName>${docker.imageFullName}</maven-tile.tile-docker-maven.docker.fullName>

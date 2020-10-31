@@ -38,8 +38,8 @@
     <maven-tile.tile-jib-docker-spring-boot.docker.jvmFlag3>${docker.jvmFlag3}</maven-tile.tile-jib-docker-spring-boot.docker.jvmFlag3>
 
     <!-- plugin version -->
-    <project.tiles.spring-boot-maven-plugin.version>2.2.6.RELEASE</project.tiles.spring-boot-maven-plugin.version>
-    <project.tiles.jib-maven-plugin.version>2.2.0</project.tiles.jib-maven-plugin.version>
+    <project.tiles.spring-boot-maven-plugin.version>2.3.5.RELEASE</project.tiles.spring-boot-maven-plugin.version>
+    <project.tiles.jib-maven-plugin.version>2.6.0</project.tiles.jib-maven-plugin.version>
   </properties>
 
   <build>

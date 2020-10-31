@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
   <properties>
-    <project.tiles.gmavenplus-plugin.version>1.9.0</project.tiles.gmavenplus-plugin.version>
+    <project.tiles.gmavenplus-plugin.version>1.11.0</project.tiles.gmavenplus-plugin.version>
   </properties>
   <build>
     <plugins>
@@ -14,8 +14,6 @@
             <goals>
               <goal>addTestSources</goal>
               <goal>compileTests</goal>
-              <!-- <goal>generateTestStubs</goal> -->
-              <!-- <goal>removeTestStubs</goal> -->
             </goals>
           </execution>
         </executions>

@@ -42,7 +42,7 @@
     <maven-tile.tile-jib-docker-bathe.docker.jvmFlag3>--add-opens=java.base/java.nio=ALL-UNNAMED</maven-tile.tile-jib-docker-bathe.docker.jvmFlag3>
 
     <!-- maven tile plugin version -->
-    <project.tiles.jib-maven-plugin.version>2.4.0</project.tiles.jib-maven-plugin.version>
+    <project.tiles.jib-maven-plugin.version>2.6.0</project.tiles.jib-maven-plugin.version>
 
   </properties>
 

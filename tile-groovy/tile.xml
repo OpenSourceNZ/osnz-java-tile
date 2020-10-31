@@ -3,7 +3,7 @@
 
   <properties>
     <sonar.language>grvy</sonar.language>
-    <project.tiles.gmavenplus-plugin.version>1.9.0</project.tiles.gmavenplus-plugin.version>
+    <project.tiles.gmavenplus-plugin.version>1.11.0</project.tiles.gmavenplus-plugin.version>
   </properties>
 
   <build>

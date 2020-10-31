@@ -2,7 +2,7 @@
 <project>
 
   <properties>
-    <project.tile.maven-resources-plugin.version>3.1.0</project.tile.maven-resources-plugin.version>
+    <project.tile.maven-resources-plugin.version>3.2.0</project.tile.maven-resources-plugin.version>
     <maven-tile.tile-helm.helm.source>${project.basedir}/src/main/resources/helm</maven-tile.tile-helm.helm.source>
     <maven-tile.tile-helm.helm.output>${project.build.directory}/helm</maven-tile.tile-helm.helm.output>
   </properties>
