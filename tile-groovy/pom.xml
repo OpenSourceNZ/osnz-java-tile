@@ -32,7 +32,7 @@
         <extensions>true</extensions>
         <configuration>
           <tiles>
-            <tile>io.osnz.tiles:tile-release:[1,2)</tile>
+            <tile>io.osnz.tiles:tile-release:[1,)</tile>
           </tiles>
         </configuration>
       </plugin>
