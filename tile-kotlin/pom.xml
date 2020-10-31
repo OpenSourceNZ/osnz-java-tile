@@ -10,7 +10,7 @@
   <groupId>io.osnz.tiles</groupId>
   <artifactId>tile-kotlin</artifactId>
   <packaging>tile</packaging>
-  <version>1.2-SNAPSHOT</version>
+  <version>1.2</version>
 
   <name>tile-kotlin</name>
   <description>tile-kotlin</description>
@@ -20,7 +20,7 @@
     <url>https://github.com/OpenSourceNZ/osnz-java-tile</url>
     <connection>scm:git:git@github.com:kdeng/osnz-java/io.osnz.tiles/tile-kotlin.git</connection>
     <developerConnection>scm:git:git@github.com:kdeng/osnz-java/io.osnz.tiles/tile-kotlin.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>tile-kotlin-1.2</tag>
   </scm>
 
   <properties>
