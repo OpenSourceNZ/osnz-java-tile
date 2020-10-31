@@ -10,7 +10,7 @@
 
   <groupId>io.osnz.tiles</groupId>
   <artifactId>tile-release</artifactId>
-  <version>1.2-SNAPSHOT</version>
+  <version>1.2</version>
   <packaging>tile</packaging>
 
   <name>tile-release</name>
@@ -58,7 +58,7 @@
     <connection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</connection>
     <developerConnection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</developerConnection>
     <url>git@github.com:OpenSourceNZ/osnz-java-tile.git</url>
-    <tag>HEAD</tag>
+    <tag>tile-release-1.2</tag>
   </scm>
 
   <profiles>
