@@ -10,7 +10,7 @@
   <groupId>io.osnz.tiles</groupId>
   <artifactId>tile-node-exec</artifactId>
   <packaging>tile</packaging>
-  <version>1.3</version>
+  <version>1.4-SNAPSHOT</version>
 
   <name>tile-node-exec</name>
   <description>tile-node-exec</description>
@@ -20,7 +20,7 @@
     <url>https://github.com/OpenSourceNZ/osnz-java-tile</url>
     <connection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</connection>
     <developerConnection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</developerConnection>
-    <tag>tile-node-exec-1.3</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <build>
