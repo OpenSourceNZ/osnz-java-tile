@@ -10,7 +10,7 @@
   <groupId>io.osnz.tiles</groupId>
   <artifactId>tile-scala</artifactId>
   <packaging>tile</packaging>
-  <version>1.2</version>
+  <version>1.3-SNAPSHOT</version>
 
   <name>tile-scala</name>
   <description>tile-scala</description>
@@ -20,7 +20,7 @@
     <url>https://github.com/OpenSourceNZ/osnz-java-tile</url>
     <connection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</connection>
     <developerConnection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</developerConnection>
-    <tag>tile-scala-1.2</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <properties>
