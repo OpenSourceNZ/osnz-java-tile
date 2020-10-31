@@ -10,7 +10,7 @@
   <groupId>io.osnz.tiles</groupId>
   <artifactId>tile-docker-maven</artifactId>
   <packaging>tile</packaging>
-  <version>1.9</version>
+  <version>1.10-SNAPSHOT</version>
 
   <name>tile-docker-maven</name>
   <description>docker maven tile</description>
@@ -20,7 +20,7 @@
     <url>https://github.com/OpenSourceNZ/osnz-java-tile</url>
     <connection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</connection>
     <developerConnection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</developerConnection>
-    <tag>tile-docker-maven-1.9</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <build>
