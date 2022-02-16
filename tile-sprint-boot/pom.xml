@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.osnz.parent</groupId>
+    <artifactId>osnz-parent</artifactId>
+    <version>2</version>
+  </parent>
+
+  <groupId>io.osnz.tiles</groupId>
+  <artifactId>tile-spring-boot</artifactId>
+  <packaging>tile</packaging>
+  <version>1.1</version>
+
+  <name>tile-spring-boot</name>
+  <description>tile-spring-boot</description>
+  <url>https://github.com/OpenSourceNZ/osnz-java-tile</url>
+
+  <scm>
+    <url>https://github.com/OpenSourceNZ/osnz-java-tile</url>
+    <connection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</connection>
+    <developerConnection>scm:git:git@github.com:OpenSourceNZ/osnz-java-tile.git</developerConnection>
+    <tag>tile-spring-boot-1.1</tag>
+  </scm>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>io.repaint.maven</groupId>
+        <artifactId>tiles-maven-plugin</artifactId>
+        <version>2.26</version>
+        <extensions>true</extensions>
+        <configuration>
+          <tiles>
+            <tile>io.osnz.tiles:tile-release:[1,)</tile>
+          </tiles>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
